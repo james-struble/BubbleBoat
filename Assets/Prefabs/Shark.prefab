@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 15345878257727349}
   - component: {fileID: 1753119905843793192}
   - component: {fileID: 1931962321945717636}
-  - component: {fileID: 5567622497291947197}
   - component: {fileID: 8712565851273963104}
   m_Layer: 0
   m_Name: Shark
@@ -155,20 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5567622497291947197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6829331952399567423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fff111c35918de1418ce030af6c9ecdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: 3
-  gameOver: 0
 --- !u!114 &8712565851273963104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6800153444169166902, guid: bb1d040186ea1fd42b86d42c5acc9730, type: 3}
   moveSpeed: 2
-  gameStatus: {fileID: 5567622497291947197}
+  gameStatus: {fileID: 0}
 --- !u!1 &7680491748289185466
 GameObject:
   m_ObjectHideFlags: 0

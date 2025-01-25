@@ -12,14 +12,14 @@ public class BoatShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("space"))
-        {
-            if (Physics2D.Raycast(transform.position, transform.up * rayDistance, rayDistance))
-            {
-                Debug.Log("AAAAA");
-            }
-        }
+        // if (Input.GetKey("space"))
+        // {
+        //     if (Physics2D.Raycast(transform.position, transform.up * rayDistance, rayDistance))
+        //     {
+        //         Debug.Log("AAAAA");
+        //     }
+        // }
 
-        Debug.DrawRay(transform.position, transform.up * rayDistance, Color.red);
+        // Debug.DrawRay(transform.position, transform.up * rayDistance, Color.red);
     }
 }

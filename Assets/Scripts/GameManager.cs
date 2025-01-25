@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +6,44 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int playerHealth = 3;
-    public bool gameOver = false;
+    [SerializeField] int playerHealth = 3;
+    
+    private int score = 0;
+
+    enum State
+    {
+        Level1,
+        GameOver
+    }
+    State state;
+
+    [SerializeField] BoatMovement boat;
+    public EventHandler OnStateChanged;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        state = State.Level1;
+    }
+
     void Start()
     {
-        
+        boat.OnTakeDamage += BoatMovement_OnTakeDamage;
     }
 
-    // Update is called once per frame
-    void Update()
+    void BoatMovement_OnTakeDamage(object sender, EventArgs e)
     {
-        if (gameOver == true){
-            Debug.Log("Game Over");
-        }
+        state = State.GameOver;
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
-    
+    public bool IsGameOver()
+    {
+        return state == State.GameOver;
+    }
+
+    public bool IsLevelOne()
+    {
+        return state == State.Level1;
+    }
 }

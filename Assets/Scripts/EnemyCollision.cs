@@ -16,7 +16,7 @@ public class EnemyCollision : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        gameStatus = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,22 +26,22 @@ public class EnemyCollision : MonoBehaviour
     }
     
      private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.CompareTag("Enemy")){
-            gameStatus.playerHealth--;
-            Destroy(collision.gameObject);
-            if(gameStatus.playerHealth <= 0){
-                gameStatus.gameOver = true;
-                Destroy(gameObject);
-                Destroy(Spawners);
-            }
+        // if(collision.CompareTag("Enemy")){
+        //     gameStatus.playerHealth--;
+        //     Destroy(collision.gameObject);
+        //     if(gameStatus.playerHealth <= 0){
+        //         gameStatus.gameOver = true;
+        //         Destroy(gameObject);
+        //         Destroy(Spawners);
+        //     }
 
-        }
-        if(gameStatus.gameOver == true){
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach(GameObject enemy in enemies){
-                Destroy(enemy, 4.0f);
-            }
-        }
+        // }
+        // if(gameStatus.gameOver == true){
+        //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //     foreach(GameObject enemy in enemies){
+        //         Destroy(enemy, 4.0f);
+        //     }
+        // }
     }
     
     

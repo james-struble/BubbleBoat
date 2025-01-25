@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -12,11 +13,23 @@ public class BoatMovement : MonoBehaviour
 
     Rigidbody2D rb;
     Transform propeller;
+
+    public event EventHandler OnTakeDamage;
+    [SerializeField] GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager.OnStateChanged += GameManager_OnStateChanged;
         rb = gameObject.GetComponent<Rigidbody2D>();
         propeller = gameObject.transform.GetChild(0);
+    }
+
+    void GameManager_OnStateChanged(object sender, EventArgs e)
+    {
+        if (gameManager.IsGameOver())
+        {
+            Debug.Log("GAME OVER");
+        }
     }
 
     // Update is called once per frame
@@ -50,5 +63,11 @@ public class BoatMovement : MonoBehaviour
         {
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("OUCH");
+        OnTakeDamage?.Invoke(this, EventArgs.Empty);
     }
 }
