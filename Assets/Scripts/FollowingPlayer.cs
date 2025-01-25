@@ -12,6 +12,7 @@ public class FollowingPlayer : MonoBehaviour{
     [SerializeField]
     public GameManager gameStatus;
     private Rigidbody2D rb;
+    private float rotationSpeed = 2f;
     private Vector2 movement;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,13 +30,16 @@ public class FollowingPlayer : MonoBehaviour{
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
+            //Debug.Log("Game Not Over");
         }
         if (gameStatus.gameOver == true){
+            Debug.Log("Game Over");
             Vector3 direction = player.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector3 oppositeDirection = -direction;
+            float angle = Mathf.Atan2(oppositeDirection.y, oppositeDirection.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
-            direction.Normalize();
-            movement = direction;
+            oppositeDirection.Normalize();
+            movement = oppositeDirection;
         }
         
         
