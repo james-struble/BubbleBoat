@@ -5,82 +5,83 @@ using UnityEngine.UIElements;
 
 public class BoatMovement : MonoBehaviour
 {
-    [SerializeField] float maxSpeed;
-    [SerializeField] float rotationSpeed;
-    [SerializeField] float drag;
-    [SerializeField] float moveSpeed = 50;
-    [SerializeField] float driftSpeed = 50;
-    [SerializeField] GameObject boatSprite;
+    [SerializeField] float maxSpeed; // Max speed boat is able to go
+    [SerializeField] float rotationSpeed; // Speed steering input travels in
+    [SerializeField] float drag; // Rate at which boat slows down when not recieving input
+    [SerializeField] float moveSpeed = 50; // Speed boat moves at
+    [SerializeField] float driftSpeed = 50; // Speed at which boat "catches up" to steering input
 
     Rigidbody2D rb;
-    Transform propeller;
-    bool gameOver = false;
+    bool gameOver = false; // Controls whether game has ended
+    bool movementInput = false;
 
-    public event EventHandler OnTakeDamage;
-    public event EventHandler OnPauseInput;
-    [SerializeField] GameManager gameManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public event EventHandler OnTakeDamage; // Event for when boat is hit
+    public event EventHandler OnPauseInput; // Event for when player hits pause input
+    [SerializeField] GameObject boatSprite;
+    [SerializeField] Transform rudder; // Transform that controllers steering
+    [SerializeField] GameManager gameManager; // Take in GameManager for event signals
+
     void Start()
     {
-        gameManager.OnStateChanged += GameManager_OnStateChanged;
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        propeller = gameObject.transform.GetChild(0);
+        gameManager.OnStateChanged += GameManager_OnStateChanged; // Subscribe to OnStateChanged event
+        rb = gameObject.GetComponent<Rigidbody2D>(); // Assign rb to gameObjecs rigidbody
+        //rudder = gameObject.transform.GetChild(0);
     }
 
-    void GameManager_OnStateChanged(object sender, EventArgs e)
+    void GameManager_OnStateChanged(object sender, EventArgs e) // When game state changes in game manager
     {
-        if (gameManager.IsGameOver())
+        if (gameManager.IsGameOver()) // Check if game has ended
         {
-            boatSprite.SetActive(false);
-            gameOver = true;
+            boatSprite.SetActive(false); // Hide boat
+            gameOver = true; // Set game to game over
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("space") && !gameOver)
+        if (Input.GetKey("space") && !gameOver) // If player performs movement input and game has not ended
         {
-            rb.AddForce(-propeller.up * moveSpeed);
-            float boatRotation = Input.GetAxisRaw("Horizontal");
-            propeller.Rotate(0, 0, Mathf.Lerp(propeller.rotation.z, -boatRotation * rotationSpeed, driftSpeed) * Time.deltaTime);
+            rb.AddForce(-rudder.up * moveSpeed);
+            float steeringInput = Input.GetAxisRaw("Horizontal"); // Check for steering input 
+            rudder.Rotate(0, 0, Mathf.Lerp(rudder.rotation.z, -steeringInput * rotationSpeed, driftSpeed) * Time.deltaTime); // Rotate rudder from current position to position player has input, at a rate of driftspeed
+            boatSprite.transform.rotation = Quaternion.Euler(0, 0, -rudder.rotation.z); // Rotate boat sprite to match direction it is moving
+            //movementInput = true;
         } else
         {
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
-            
-            //Debug.Log(rb.linearVelocityX + " " + rb.linearVelocityY);
+            //movementInput = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            OnPauseInput?.Invoke(this, EventArgs.Empty);
+            OnPauseInput?.Invoke(this, EventArgs.Empty); // Fire OnPauseInput event
         }
-
-
-        // float boatRotation = Input.GetAxisRaw("Horizontal");
-        // transform.Rotate(0, 0, Mathf.Lerp(transform.rotation.z, -boatRotation * rotationSpeed, driftSpeed) * Time.deltaTime);
-
-        // Debug.Log("" + transform.rotation.z + " " + -boatRotation * rotationSpeed);
     }
-    
-    // public float maxSpeed = 200f;//Replace with your max speed
-
 
     // //https://discussions.unity.com/t/limiting-rigidbody-speed/44191
     void FixedUpdate()
     {
-        if(rb.linearVelocity.magnitude > maxSpeed)
+        if(rb.linearVelocity.magnitude > maxSpeed) // If velocity goes above maxSpeed
         {
-            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
+            rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed; // Clamp velocity at maxSpeed
         }
+
+        // Tried to properly put physics code here in FixedUpdate but completely messed up the movement so I put it back in Update
+        // if (movementInput)
+        // {
+        //     rb.AddForce(-rudder.up * moveSpeed); // Add force in reverse direction of rudder
+        // }
+        // else
+        // {
+        //     rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime); // If player is not performing movement input, slowly move velocity from current velocity to (0,0,0) velocity at a rate of drag
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("Enemy"))
+        if(collider.gameObject.CompareTag("Enemy")) // On collision with enemy
         {
-            OnTakeDamage?.Invoke(this, EventArgs.Empty);
-            Debug.Log("OUCH");
+            OnTakeDamage?.Invoke(this, EventArgs.Empty); // Fire OnTakeDamage event
         }
     }
 }

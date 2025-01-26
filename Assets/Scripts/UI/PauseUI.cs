@@ -18,16 +18,15 @@ public class PauseUI : MonoBehaviour
 
     void Awake()
     {
-        // TextMeshPro method of tracking if button has been pressed
-        resumeButton.onClick.AddListener(ResumeGame);
+        resumeButton.onClick.AddListener(ResumeGame); // Calls ResumeGame function if button pressed
         retryButton.onClick.AddListener(ResetGame); // Calls ResetGame function if button pressed
-        exitButton.onClick.AddListener(ExitGame);
+        exitButton.onClick.AddListener(ExitGame); // Calls ExitGame function if button pressed
     }
 
     void Start()
     {
         Hide(); // Hide all Game Over UI elements
-        boatMovement.OnPauseInput += boatMovement_OnPauseInput; 
+        boatMovement.OnPauseInput += boatMovement_OnPauseInput; // Subscribe to OnPauseInput event
     }
 
     void boatMovement_OnPauseInput(object sender, EventArgs e)
@@ -36,66 +35,49 @@ public class PauseUI : MonoBehaviour
         {
             if (gamePaused)
             {
-                ResumeGame();
+                ResumeGame(); // Resume game if already paused
             }
             else
             {
-                PauseGame();
+                PauseGame(); // Pause game
             }
-        }
-    }
-
-    void Update()
-    {
-        Debug.Log("THE END");
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("THE END");
-            // if (gamePaused)
-            // {
-            //     ResumeGame();
-            // }
-            // else
-            // {
-            //     PauseGame();
-            // }
         }
     }
     
     private void Show() 
     {
-        gameObject.SetActive(true); // Show Game Over UI Elements
+        gameObject.SetActive(true); // Show Pause UI Elements
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false); // Hide Game Over UI Elements
+        gameObject.SetActive(false); // Hide Pause UI Elements
     }
 
     private void ResumeGame()
     {
         Hide();
-        Time.timeScale = 1f;
-        gamePaused = false;
+        Time.timeScale = 1f; // Set timeScale to normal 
+        gamePaused = false; // Set game state to unpaused
 
     }
 
     private void PauseGame()
     {
         Show();
-        Time.timeScale = 0f;
-        gamePaused = true;
+        Time.timeScale = 0f; // Freeze time (this is bad practice but im tired)
+        gamePaused = true; // Set game state to paused
     }
 
     private void ResetGame()
     {
-        ResumeGame();
+        ResumeGame(); // Resume game so that time unfreezes before resetting scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Reset game scene
     }
 
     private void ExitGame()
     {
-        ResumeGame();
+        ResumeGame(); // Resume game so that time unfreezes before loading main menu
         SceneManager.LoadScene("MainMenu");
     }
 }

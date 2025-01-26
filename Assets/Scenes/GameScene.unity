@@ -1407,7 +1407,6 @@ GameObject:
   m_Component:
   - component: {fileID: 753534891}
   - component: {fileID: 753534890}
-  - component: {fileID: 753534894}
   - component: {fileID: 753534893}
   - component: {fileID: 753534892}
   - component: {fileID: 753534895}
@@ -1436,6 +1435,7 @@ MonoBehaviour:
   moveSpeed: 5
   driftSpeed: 0.25
   boatSprite: {fileID: 647768372}
+  rudder: {fileID: 1811433068}
   gameManager: {fileID: 432139287}
 --- !u!4 &753534891
 Transform:
@@ -1517,19 +1517,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &753534894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 753534889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7625078fe56554da18d30cb3e41b1b2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rayDistance: 5
 --- !u!114 &753534895
 MonoBehaviour:
   m_ObjectHideFlags: 0

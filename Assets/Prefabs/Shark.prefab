@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8560569854006992857, guid: 90ff8dfb9d232c245804e5462ce8b3b5, type: 3}
   moveSpeed: 2
-  gameStatus: {fileID: 2553108103864371764, guid: 427cea15bc7e046429b745e667f62cd2, type: 3}
+  gameOverSpeed: 5
 --- !u!1 &7680491748289185466
 GameObject:
   m_ObjectHideFlags: 0

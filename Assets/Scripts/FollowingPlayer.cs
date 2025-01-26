@@ -14,6 +14,7 @@ public class FollowingPlayer : MonoBehaviour{
     private float rotationSpeed = 2f;
     private Vector2 movement;
     private bool gameOver = false;
+    [SerializeField] float gameOverSpeed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -54,7 +55,7 @@ public class FollowingPlayer : MonoBehaviour{
             float angle = Mathf.Atan2(oppositeDirection.y, oppositeDirection.x) * Mathf.Rad2Deg;
             rb.rotation = angle;
             oppositeDirection.Normalize();
-            movement = oppositeDirection;
+            movement = oppositeDirection * gameOverSpeed;
         }
     }
 

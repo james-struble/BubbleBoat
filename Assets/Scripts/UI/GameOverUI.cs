@@ -15,9 +15,8 @@ public class GameOverUI : MonoBehaviour
 
     void Awake()
     {
-        // TextMeshPro method of tracking if button has been pressed
         retryButton.onClick.AddListener(ResetGame); // Calls ResetGame function if button pressed
-        exitButton.onClick.AddListener(ExitGame);
+        exitButton.onClick.AddListener(ExitGame); // Calls ExitGame function if button pressed
     }
 
     void Start()
@@ -32,16 +31,7 @@ public class GameOverUI : MonoBehaviour
         {
             Show(); // Show all Game Over UI elements
             scoreText.text = gameManager.GetScore().ToString(); // Change scoreText to score of current game
-            //hiScoreText.text = gameManager.GetHighScore().ToString(); // Change hiScoreText to Highscore saved in PlayerPrefs
         }
-
-        // if (gameManager.IsGameWon())
-        // {  
-        //     Show(); // Show all Game Over UI elements
-        //     gameOverText.text = "YOU WIN";
-        //     scoreText.text = gameManager.GetScore().ToString(); // Change scoreText to score of current game
-        //     hiScoreText.text = gameManager.GetHighScore().ToString(); // Change hiScoreText to Highscore saved in PlayerPrefs
-        // }
     }
     
     private void Show() 
@@ -61,6 +51,6 @@ public class GameOverUI : MonoBehaviour
 
     private void ExitGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainMenu"); // Load Main Menu scene
     }
 }
