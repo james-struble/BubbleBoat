@@ -13,7 +13,7 @@ Survive the game, kill the sharks! 🦈
 - [James Struble](https://github.com/james-struble) - Programming, Graphics
 - [Lucas de Pena](https://github.com/Lucasdelapena) - Programming, Graphics
 - [Michelle Zhou](https://github.com/mfzhouWU) - Pixel Art, Graphics
-- Keewon Owens - Art, Graphics
+- [Keewon Owens](https://github.com/KeewonOwens) - Art, Graphics
 - Jessie Miller - Art
 - [Local Space Patrol](https://www.localspacepatrol.com/) - Music
 - [Jason Charney](https://github.com/jrcharney) - Sound Effects
