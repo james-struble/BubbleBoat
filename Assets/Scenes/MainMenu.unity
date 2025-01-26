@@ -3207,7 +3207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 378382723}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: DisplayCredits
+        m_MethodName: DisplayMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
