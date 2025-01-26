@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject mainMenuUI;
     [SerializeField] GameObject creditsUI;
 
+    void Awake()
+    {
+        DisplayMenu();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); //loads the next scene in the build index
@@ -19,6 +24,12 @@ public class MainMenu : MonoBehaviour
     {
         mainMenuUI.SetActive(false);
         creditsUI.SetActive(true);
+    }
+
+    public void DisplayMenu()
+    {
+        mainMenuUI.SetActive(true);
+        creditsUI.SetActive(false);
     }
 
     public void QuitGame()
