@@ -7,15 +7,17 @@ using UnityEngine;
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] GameManager gameManager; // Reference to GameManger script for event listening, state checking, and function calling
-    [SerializeField] private TextMeshProUGUI gameOverText;
+    //[SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI scoreText;
     //[SerializeField] private TextMeshProUGUI hiScoreText;
     [SerializeField] private Button retryButton;
+    [SerializeField] private Button exitButton;
 
     void Awake()
     {
         // TextMeshPro method of tracking if button has been pressed
         retryButton.onClick.AddListener(ResetGame); // Calls ResetGame function if button pressed
+        exitButton.onClick.AddListener(ExitGame);
     }
 
     void Start()
@@ -55,5 +57,10 @@ public class GameOverUI : MonoBehaviour
     private void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  // Reset game scene
+    }
+
+    private void ExitGame()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
