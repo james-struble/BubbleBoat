@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,27 @@ public class Spawner : MonoBehaviour
 
     private float _timeUntilSpawn = 0.0f;
 
+    [SerializeField] GameManager gameManager;
+
+    private bool gameOver = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         SetTimeUntilSpawn();
+    }
+
+    void Start()
+    {
+        gameManager.OnStateChanged += GameManager_OnStateChanged;
+    }
+
+    void GameManager_OnStateChanged(object sender, EventArgs e)
+    {
+        if (gameManager.IsGameOver())
+        {
+            gameOver = true;
+        }
     }
 
     // Update is called once per frame
@@ -27,13 +45,13 @@ public class Spawner : MonoBehaviour
     {
         _timeUntilSpawn -= Time.deltaTime;
 
-        if(_timeUntilSpawn <= 0.0f){
+        if(_timeUntilSpawn <= 0.0f && !gameOver){
             Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
             SetTimeUntilSpawn();
         }
     }
 
     private void SetTimeUntilSpawn(){
-        _timeUntilSpawn = Random.Range(_minimumSpawnTime, _maximumSpawnTime);
+        _timeUntilSpawn = UnityEngine.Random.Range(_minimumSpawnTime, _maximumSpawnTime);
     }
 }
