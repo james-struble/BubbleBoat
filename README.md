@@ -10,11 +10,13 @@ Survive the game, kill the sharks! 🦈
 
 # Creators
 
+**We are the *Bubble Buddies*!**
+
 - [James Struble](https://github.com/james-struble) - Programming, Graphics
 - [Lucas de Pena](https://github.com/Lucasdelapena) - Programming, Graphics
 - [Michelle Zhou](https://github.com/mfzhouWU) - Pixel Art, Graphics
 - [Keewon Owens](https://github.com/KeewonOwens) - Art, Graphics
-- Jessie Miller - Art
+- [Jessie Miller](https://github.com/jt-moonwalker) - Art
 - [Local Space Patrol](https://www.localspacepatrol.com/) - Music
 - [Jason Charney](https://github.com/jrcharney) - Sound Effects
 
