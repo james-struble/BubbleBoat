@@ -17,6 +17,7 @@ public class BoatMovement : MonoBehaviour
     bool gameOver = false;
 
     public event EventHandler OnTakeDamage;
+    public event EventHandler OnPauseInput;
     [SerializeField] GameManager gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,7 +31,6 @@ public class BoatMovement : MonoBehaviour
     {
         if (gameManager.IsGameOver())
         {
-            Debug.Log("GAME OVER");
             boatSprite.SetActive(false);
             gameOver = true;
         }
@@ -49,6 +49,11 @@ public class BoatMovement : MonoBehaviour
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
             
             //Debug.Log(rb.linearVelocityX + " " + rb.linearVelocityY);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnPauseInput?.Invoke(this, EventArgs.Empty);
         }
 
 
