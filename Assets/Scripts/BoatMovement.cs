@@ -43,6 +43,7 @@ public class BoatMovement : MonoBehaviour
         } else
         {
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
+            
             //Debug.Log(rb.linearVelocityX + " " + rb.linearVelocityY);
         }
 
@@ -67,8 +68,10 @@ public class BoatMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("OUCH");
-        OnTakeDamage?.Invoke(this, EventArgs.Empty);
-        Destroy(collider.gameObject);
+        if(collider.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            OnTakeDamage?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

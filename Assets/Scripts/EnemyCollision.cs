@@ -39,24 +39,24 @@ public class EnemyCollision : MonoBehaviour
 
     }
     
-     private void OnTriggerEnter2D(Collider2D collision){
-        // if(collision.CompareTag("Enemy")){
-        //     gameStatus.playerHealth--;
-        //     Destroy(collision.gameObject);
-        //     if(gameStatus.playerHealth <= 0){
-        //         gameStatus.gameOver = true;
-        //         Destroy(gameObject);
-        //         Destroy(Spawners);
-        //     }
+    //  private void OnTriggerEnter2D(Collider2D collision){
+    //     if(collision.CompareTag("Enemy")){
+    //         gameStatus.playerHealth--;
+    //         Destroy(collision.gameObject);
+    //         if(gameStatus.playerHealth <= 0){
+    //             gameStatus.gameOver = true;
+    //             Destroy(gameObject);
+    //             Destroy(Spawners);
+    //         }
 
-        // }
-        // if(gameStatus.gameOver == true){
-        //     GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //     foreach(GameObject enemy in enemies){
-        //         Destroy(enemy, 4.0f);
-        //     }
-        // }
-    }
+    //     }
+    //     if(gameStatus.gameOver == true){
+    //         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    //         foreach(GameObject enemy in enemies){
+    //             Destroy(enemy, 4.0f);
+    //         }
+    //     }
+    // }
     
     
 }
