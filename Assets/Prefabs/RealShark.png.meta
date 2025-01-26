@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RealShark_0: 5587563531024468537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
