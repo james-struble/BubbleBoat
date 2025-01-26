@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sharkimage_0: -8272675218907879917
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
