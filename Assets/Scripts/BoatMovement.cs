@@ -69,5 +69,6 @@ public class BoatMovement : MonoBehaviour
     {
         Debug.Log("OUCH");
         OnTakeDamage?.Invoke(this, EventArgs.Empty);
+        Destroy(collider.gameObject);
     }
 }

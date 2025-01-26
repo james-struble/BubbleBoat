@@ -121,7 +121,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d4e7c4e744bfb418ce3893904e1d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6800153444169166902, guid: bb1d040186ea1fd42b86d42c5acc9730, type: 3}
+  player: {fileID: 8560569854006992857, guid: 90ff8dfb9d232c245804e5462ce8b3b5, type: 3}
   moveSpeed: 2
-  gameStatus: {fileID: 0}
+  gameStatus: {fileID: 2553108103864371764, guid: 427cea15bc7e046429b745e667f62cd2, type: 3}
 --- !u!1 &7680491748289185466
 GameObject:
   m_ObjectHideFlags: 0

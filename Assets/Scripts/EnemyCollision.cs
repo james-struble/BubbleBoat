@@ -14,9 +14,23 @@ public class EnemyCollision : MonoBehaviour
     public GameObject Spawners;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         gameStatus = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
+    void Start()
+    {
+        gameStatus.OnStateChanged += GameManager_OnStateChanged;
+    }
+
+    void GameManager_OnStateChanged(object sender, System.EventArgs e)
+    {
+        if (gameStatus.IsGameOver())
+        {
+            Destroy(gameObject);
+            Destroy(Spawners);
+        }
     }
 
     // Update is called once per frame

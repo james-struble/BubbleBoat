@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     
     private int score = 0;
 
+    private int health = 3;
+
     enum State
     {
         Level1,
@@ -33,8 +35,16 @@ public class GameManager : MonoBehaviour
 
     void BoatMovement_OnTakeDamage(object sender, EventArgs e)
     {
-        state = State.GameOver;
-        OnStateChanged?.Invoke(this, EventArgs.Empty);
+        health--;
+        if (health <= 0)
+        {
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in enemies){
+                 Destroy(enemy, 4.0f);
+            }
+            state = State.GameOver;
+            OnStateChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public bool IsGameOver()
