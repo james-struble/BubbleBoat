@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     State state;
 
     [SerializeField] BoatMovement boat;
+    [SerializeField] ParticleCollision particleCollision;
     public EventHandler OnStateChanged;
+    public EventHandler OnScoreChanged;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         boat.OnTakeDamage += BoatMovement_OnTakeDamage;
+        particleCollision.OnEnemyHit += ParticleCollision_OnEnemyHit;
     }
 
     void BoatMovement_OnTakeDamage(object sender, EventArgs e)
@@ -49,6 +52,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void ParticleCollision_OnEnemyHit(object sender, EventArgs e)
+    {
+        score++;
+        OnScoreChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     public bool IsGameOver()
     {
         return state == State.GameOver;
@@ -57,5 +66,10 @@ public class GameManager : MonoBehaviour
     public bool IsLevelOne()
     {
         return state == State.Level1;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }
