@@ -46,10 +46,10 @@ public class FollowingPlayer : MonoBehaviour{
             rb.rotation = angle;
             direction.Normalize();
             movement = direction;
-            Debug.Log("aiming for player");
+            //Debug.Log("aiming for player");
         }
         if(gameOver){
-            Debug.Log("Game Over");
+            //Debug.Log("Game Over");
             Vector3 direction = player.position - transform.position;
             Vector3 oppositeDirection = -direction;
             float angle = Mathf.Atan2(oppositeDirection.y, oppositeDirection.x) * Mathf.Rad2Deg;

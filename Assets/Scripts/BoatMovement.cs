@@ -55,7 +55,7 @@ public class BoatMovement : MonoBehaviour
             //movementInput = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameOver)
         {
             OnPauseInput?.Invoke(this, EventArgs.Empty); // Fire OnPauseInput event
         }
