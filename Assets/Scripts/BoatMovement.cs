@@ -44,7 +44,7 @@ public class BoatMovement : MonoBehaviour
             rb.AddForce(-rudder.up * moveSpeed);
             float steeringInput = Input.GetAxisRaw("Horizontal"); // Check for steering input 
             rudder.Rotate(0, 0, Mathf.Lerp(rudder.rotation.z, -steeringInput * rotationSpeed, driftSpeed) * Time.deltaTime); // Rotate rudder from current position to position player has input, at a rate of driftspeed
-            boatSprite.transform.rotation = Quaternion.Euler(0, 0, -rudder.rotation.z); // Rotate boat sprite to match direction it is moving
+            //boatSprite.transform.Rotate(0, 0, -rudder.rotation.z); // Rotate boat sprite to match direction it is moving
             //movementInput = true;
         } else
         {
