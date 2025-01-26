@@ -43,16 +43,16 @@ public class BoatMovement : MonoBehaviour
         if (Input.GetKey("space") && !gameOver) // If player performs movement input and game has not ended
         {
             animator.SetBool("isMoving", true);
-            rb.AddForce(-rudder.up * moveSpeed);
+            //rb.AddForce(-rudder.up * moveSpeed);
             float steeringInput = Input.GetAxisRaw("Horizontal"); // Check for steering input 
             rudder.Rotate(0, 0, Mathf.Lerp(rudder.rotation.z, -steeringInput * rotationSpeed, driftSpeed) * Time.deltaTime); // Rotate rudder from current position to position player has input, at a rate of driftspeed
             //boatSprite.transform.Rotate(0, 0, -rudder.rotation.z); // Rotate boat sprite to match direction it is moving
-            //movementInput = true;
+            movementInput = true;
         } else
         {
             animator.SetBool("isMoving", false);
-            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
-            //movementInput = false;
+            //rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
+            movementInput = false;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && !gameOver)
@@ -70,14 +70,14 @@ public class BoatMovement : MonoBehaviour
         }
 
         // Tried to properly put physics code here in FixedUpdate but completely messed up the movement so I put it back in Update
-        // if (movementInput)
-        // {
-        //     rb.AddForce(-rudder.up * moveSpeed); // Add force in reverse direction of rudder
-        // }
-        // else
-        // {
-        //     rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime); // If player is not performing movement input, slowly move velocity from current velocity to (0,0,0) velocity at a rate of drag
-        // }
+        if (movementInput)
+        {
+            rb.AddForce(-rudder.up * moveSpeed * 12); // Add force in reverse direction of rudder
+        }
+        else
+        {
+            rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime); // If player is not performing movement input, slowly move velocity from current velocity to (0,0,0) velocity at a rate of drag
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collider)
