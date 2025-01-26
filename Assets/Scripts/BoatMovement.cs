@@ -20,6 +20,7 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] GameObject boatSprite;
     [SerializeField] Transform rudder; // Transform that controllers steering
     [SerializeField] GameManager gameManager; // Take in GameManager for event signals
+    [SerializeField] Animator animator;
 
     void Start()
     {
@@ -41,6 +42,7 @@ public class BoatMovement : MonoBehaviour
     {
         if (Input.GetKey("space") && !gameOver) // If player performs movement input and game has not ended
         {
+            animator.SetBool("isMoving", true);
             rb.AddForce(-rudder.up * moveSpeed);
             float steeringInput = Input.GetAxisRaw("Horizontal"); // Check for steering input 
             rudder.Rotate(0, 0, Mathf.Lerp(rudder.rotation.z, -steeringInput * rotationSpeed, driftSpeed) * Time.deltaTime); // Rotate rudder from current position to position player has input, at a rate of driftspeed
@@ -48,6 +50,7 @@ public class BoatMovement : MonoBehaviour
             //movementInput = true;
         } else
         {
+            animator.SetBool("isMoving", false);
             rb.linearVelocity = Vector3.Lerp(rb.linearVelocity, Vector3.zero, drag  * Time.deltaTime);
             //movementInput = false;
         }
