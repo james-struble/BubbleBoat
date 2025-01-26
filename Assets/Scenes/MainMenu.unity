@@ -2768,7 +2768,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Lucas de la Pe\xF1a- Enemy Code, Main Menu"
+  m_text: Lucas de la Pena- Enemy Code, Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5d09a89ebb69b4d45842424237ffb578, type: 2}
   m_sharedMaterial: {fileID: 9041403138154687685, guid: 5d09a89ebb69b4d45842424237ffb578, type: 2}
