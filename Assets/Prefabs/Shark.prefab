@@ -254,5 +254,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8560569854006992857, guid: 90ff8dfb9d232c245804e5462ce8b3b5, type: 3}
-  moveSpeed: 2
-  gameOverSpeed: 5
+  moveSpeed: 4
+  gameOverSpeed: 8
