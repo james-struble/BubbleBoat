@@ -1737,6 +1737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a32ce54402f24f01a14b7b2aef65729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 432139287}
+  scoreText: {fileID: 457870657}
+  retryButton: {fileID: 268148958}
+  exitButton: {fileID: 434165136}
 --- !u!1 &887643405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,8 +2015,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2065053195
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 3616666922399248124, guid: 8d76ccc2ea78a1b45b534b8b0d14fa6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2034,8 +2038,8 @@ Transform:
   m_GameObject: {fileID: 1382504531}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0172, y: 0.9844, z: 0}
-  m_LocalScale: {x: 0.949, y: 0.9342, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
