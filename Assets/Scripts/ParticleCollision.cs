@@ -15,6 +15,5 @@ public class ParticleCollision : MonoBehaviour
         {
             Destroy(other);
         }
-           
     }
 }
