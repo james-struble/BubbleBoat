@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 James Struble, Jason Charney, Michelle Zhou, Clementine Hutchinson, Jessie Miller, Lucas de Pena, and Local Space Patrol
+Copyright (c) 2025 James Struble, Lucas de Pena, Michelle Zhou, Jessie Miller, Local Space Patrol, Jason Charney, and Keewon Owens
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
