@@ -9,16 +9,20 @@ public class FollowingPlayer : MonoBehaviour{
     public Transform player;
     public float moveSpeed = 5f;
     
-    [SerializeField]
     GameManager gameStatus;
     private Rigidbody2D rb;
     private float rotationSpeed = 2f;
     private Vector2 movement;
     private bool gameOver = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         player = GameObject.Find("Player").transform;
+        gameStatus = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+    
+    void Start()
+    {
         rb = this.GetComponent<Rigidbody2D>();
         gameStatus.OnStateChanged += GameManager_OnStateChanged;
         

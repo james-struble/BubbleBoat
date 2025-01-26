@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     
     private int score = 0;
 
-    private int health = 3;
+    private int health = 1;
 
     enum State
     {
@@ -35,15 +35,17 @@ public class GameManager : MonoBehaviour
 
     void BoatMovement_OnTakeDamage(object sender, EventArgs e)
     {
+        Debug.Log("OWIE");
         health--;
         if (health <= 0)
         {
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in enemies){
-                 Destroy(enemy, 4.0f);
+                Destroy(enemy, 4.0f);
             }
             state = State.GameOver;
             OnStateChanged?.Invoke(this, EventArgs.Empty);
+            Debug.Log("GAMEOVER");
         }
     }
 

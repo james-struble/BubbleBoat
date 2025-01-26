@@ -10,9 +10,11 @@ public class BoatMovement : MonoBehaviour
     [SerializeField] float drag;
     [SerializeField] float moveSpeed = 50;
     [SerializeField] float driftSpeed = 50;
+    [SerializeField] GameObject boatSprite;
 
     Rigidbody2D rb;
     Transform propeller;
+    bool gameOver = false;
 
     public event EventHandler OnTakeDamage;
     [SerializeField] GameManager gameManager;
@@ -29,13 +31,15 @@ public class BoatMovement : MonoBehaviour
         if (gameManager.IsGameOver())
         {
             Debug.Log("GAME OVER");
+            boatSprite.SetActive(false);
+            gameOver = true;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("space"))
+        if (Input.GetKey("space") && !gameOver)
         {
             rb.AddForce(-propeller.up * moveSpeed);
             float boatRotation = Input.GetAxisRaw("Horizontal");
@@ -70,8 +74,8 @@ public class BoatMovement : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
             OnTakeDamage?.Invoke(this, EventArgs.Empty);
+            Debug.Log("OUCH");
         }
     }
 }
